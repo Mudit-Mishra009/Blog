@@ -1,0 +1,44 @@
+{% extends "base.html" %} <!--Either add the name of the file being extended or the relative path like ../templates/base..html. The only difference being, in the relative path, the path is hard-coded and in the file name itself you need to go to settings.py to let djnago know that it needs to check the templates folder as well.-->
+{% load static %}
+<!--Always add your app name in the installed apps list in setting.py to make django aware of the app you are using.-->
+
+{% block title %}
+  My Blog
+{% endblock %}
+
+{% block css-files %}
+  <link rel="stylesheet" href="{% static "blog/post.css" %}">
+  <link rel="stylesheet" href="{% static "blog/index.css" %}">
+{% endblock %}
+
+{% block content %}
+  <section id = "welcome">
+    <header>
+      <img src="{% static "blog/images/smiley.jpg" %}" alt="Mudit - The Author Of This Blog">
+      <h2>MUDIT'S BLOG</h2>
+    </header>
+    <p>Hi, I am Mudit and I love to blog about tech, nature and various wonderful things going on around the world. </p>
+  </section>
+
+  <section id = "latest-posts">
+    <h2>My Latest Thinking Ventures</h2>
+    <ul>
+      {% for post in posts%}
+        {% include "blog/includes/post.html"%}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id = "about">
+    <h2>What I do</h2>
+    <p>
+      I love programming, I love diving into different concepts of technology
+      and exploring new things in the process.
+    </p>
+    <p>
+      My goal is to keep growing as a programmer by enhancing my skills
+      appreciating all the help I get and giving out the same along the way.
+    </p>
+  </section>
+
+{% endblock %}

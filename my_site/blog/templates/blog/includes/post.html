@@ -1,0 +1,13 @@
+<li>
+        <article class = "post"> 
+          <a href="{% url "post-detail-page" post.slug %}"> <!--slug = "the-mountains"-->
+            <img src= "{{ post.image.url }}" alt="{{ post.title }}"/><!--Adding images dynamically using add by accessing the key called image from the dictionary!-->
+            <div class = "post__content">
+              <h3>{{ post.title }}</h3> <!--In python html this is how we access the dictionary key-->
+              <p>
+                {{ post.excerpt }}
+              </p>
+            </div>
+          </a>
+        </article>
+      </li>
